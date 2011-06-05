@@ -1,0 +1,24 @@
+Upon receving a new announcement one must add it to the cache.
+All entries in a cache have expiration time.
+
+ssdp:discover requests sent to the SSDP multicast channel/port MUST 
+   have a request-URI of "*". Note that future specifications may allow 
+   for other request-URIs to be used so implementations based on this 
+   specification MUST be ready to ignore ssdp:discover requests on the 
+   SSDP multicast channel/port with a request-URI other than "*". 
+    
+   Only SSDP services that have a service type that matches the value 
+   in the ST header MAY respond to a ssdp:discover request on the SSDP 
+   multicast channel/port. 
+    
+   Responses to ssdp:discover requests sent over the SSDP multicast 
+   channel/port are to be sent to the IP address/port the ssdp:discover 
+   request came from. 
+
+Response to ssdp:discover requests SHOULD contain a cache-control: 
+   max-age or Expires header. If both are present then they are to be 
+   processed in the order specified by HTTP/1.1, that is, the cache-
+   control header takes precedence of the Expires header. If neither 
+   the cache-control nor the Expires header is provided on the response 
+   to a ssdp:discover request then the information contained in that 
+   response MUST NOT be cached by SSDP clients. 
